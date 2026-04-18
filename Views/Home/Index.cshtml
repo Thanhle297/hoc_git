@@ -1,0 +1,191 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+}
+
+<!-- Header -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <h1 class="text-2xl font-bold text-indigo-600">DATN Shop</h1>
+
+        <nav class="hidden md:flex gap-6 text-sm font-medium">
+            <a href="#" class="hover:text-indigo-600">Trang chủ</a>
+            <a href="#" class="hover:text-indigo-600">Sản phẩm</a>
+            <a href="#" class="hover:text-indigo-600">Danh mục</a>
+            <a href="#" class="hover:text-indigo-600">Liên hệ</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+            <a href="#" class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 text-sm">Đăng nhập</a>
+            <a href="#" class="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 text-sm">Giỏ hàng</a>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-indigo-600 to-blue-500 text-white">
+    <div class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center">
+        <div>
+            <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                Mua sắm dễ dàng với giao diện hiện đại
+            </h2>
+            <p class="text-lg text-indigo-100 mb-8">
+                Khám phá hàng trăm sản phẩm chất lượng, giá tốt và giao hàng nhanh chóng.
+            </p>
+            <div class="flex gap-4">
+                <a href="#" class="bg-white text-indigo-600 px-6 py-3 rounded-xl font-semibold hover:bg-gray-100">
+                    Mua ngay
+                </a>
+                <a href="#" class="border border-white px-6 py-3 rounded-xl font-semibold hover:bg-white hover:text-indigo-600">
+                    Xem thêm
+                </a>
+            </div>
+        </div>
+
+        <div class="flex justify-center">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80"
+                 alt="Banner"
+                 class="rounded-2xl shadow-2xl w-full max-w-lg h-[350px] object-cover" />
+        </div>
+    </div>
+</section>
+
+<!-- Features -->
+<section class="max-w-7xl mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl shadow p-6">
+            <h3 class="text-xl font-semibold mb-3">Sản phẩm chất lượng</h3>
+            <p class="text-gray-600">
+                Chúng tôi cung cấp các sản phẩm được chọn lọc kỹ càng, đảm bảo chất lượng tốt nhất.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow p-6">
+            <h3 class="text-xl font-semibold mb-3">Giao hàng nhanh</h3>
+            <p class="text-gray-600">
+                Hệ thống vận chuyển tối ưu giúp đơn hàng đến tay bạn trong thời gian ngắn.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow p-6">
+            <h3 class="text-xl font-semibold mb-3">Hỗ trợ 24/7</h3>
+            <p class="text-gray-600">
+                Đội ngũ hỗ trợ luôn sẵn sàng giải đáp mọi thắc mắc trong quá trình mua sắm.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Products -->
+<section class="max-w-7xl mx-auto px-6 pb-16">
+    <div class="flex items-center justify-between mb-8">
+        <h2 class="text-3xl font-bold">Sản phẩm nổi bật</h2>
+        <a href="#" class="text-indigo-600 font-medium hover:underline">Xem tất cả</a>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80"
+                 class="h-52 w-full object-cover" alt="Sản phẩm 1" />
+            <div class="p-4">
+                <h3 class="font-semibold text-lg">Giày thể thao</h3>
+                <p class="text-gray-500 text-sm mt-1">Thiết kế năng động, trẻ trung</p>
+                <div class="mt-4 flex items-center justify-between">
+                    <span class="text-indigo-600 font-bold">1.200.000đ</span>
+                    <button class="px-3 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm">
+                        Mua
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80"
+                 class="h-52 w-full object-cover" alt="Sản phẩm 2" />
+            <div class="p-4">
+                <h3 class="font-semibold text-lg">Áo thời trang</h3>
+                <p class="text-gray-500 text-sm mt-1">Phong cách hiện đại, dễ phối đồ</p>
+                <div class="mt-4 flex items-center justify-between">
+                    <span class="text-indigo-600 font-bold">450.000đ</span>
+                    <button class="px-3 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm">
+                        Mua
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1526178613552-2b45c6c302f0?auto=format&fit=crop&w=800&q=80"
+                 class="h-52 w-full object-cover" alt="Sản phẩm 3" />
+            <div class="p-4">
+                <h3 class="font-semibold text-lg">Máy ảnh mini</h3>
+                <p class="text-gray-500 text-sm mt-1">Nhỏ gọn, chụp ảnh sắc nét</p>
+                <div class="mt-4 flex items-center justify-between">
+                    <span class="text-indigo-600 font-bold">2.800.000đ</span>
+                    <button class="px-3 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm">
+                        Mua
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80"
+                 class="h-52 w-full object-cover" alt="Sản phẩm 4" />
+            <div class="p-4">
+                <h3 class="font-semibold text-lg">Tai nghe</h3>
+                <p class="text-gray-500 text-sm mt-1">Âm thanh tốt, thiết kế sang trọng</p>
+                <div class="mt-4 flex items-center justify-between">
+                    <span class="text-indigo-600 font-bold">990.000đ</span>
+                    <button class="px-3 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm">
+                        Mua
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-indigo-600 text-white">
+    <div class="max-w-7xl mx-auto px-6 py-16 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Sẵn sàng mua sắm chưa?</h2>
+        <p class="text-indigo-100 mb-6">
+            Đăng ký ngay để nhận ưu đãi và cập nhật sản phẩm mới nhất.
+        </p>
+        <a href="#" class="inline-block bg-white text-indigo-600 px-6 py-3 rounded-xl font-semibold hover:bg-gray-100">
+            Bắt đầu ngay
+        </a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300">
+    <div class="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-8">
+        <div>
+            <h3 class="text-xl font-bold text-white mb-3">DATN Shop</h3>
+            <p class="text-sm">
+                Website thương mại điện tử xây dựng bằng ASP.NET Core MVC và Tailwind CSS.
+            </p>
+        </div>
+
+        <div>
+            <h4 class="text-white font-semibold mb-3">Liên kết</h4>
+            <ul class="space-y-2 text-sm">
+                <li><a href="#" class="hover:text-white">Trang chủ</a></li>
+                <li><a href="#" class="hover:text-white">Sản phẩm</a></li>
+                <li><a href="#" class="hover:text-white">Giới thiệu</a></li>
+                <li><a href="#" class="hover:text-white">Liên hệ</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="text-white font-semibold mb-3">Liên hệ</h4>
+            <p class="text-sm">Email: support@datnshop.com</p>
+            <p class="text-sm">Hotline: 0123 456 789</p>
+        </div>
+    </div>
+
+    <div class="border-t border-gray-800 text-center text-sm py-4">
+        © 2026 DATN Shop. All rights reserved.
+    </div>
+</footer>
