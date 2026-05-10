@@ -2,190 +2,784 @@
     ViewData["Title"] = "Trang chủ";
 }
 
-<!-- Header -->
-<header class="bg-white shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <h1 class="text-2xl font-bold text-indigo-600">DATN Shop</h1>
+<!-- Top Bar -->
+<div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-2">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between text-sm">
+            <div class="flex items-center gap-6">
+                <span class="hidden sm:inline">📞 Hotline: 1900-xxxx</span>
+                <span class="hidden md:inline">📧 support@fashionstore.vn</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#" class="hover:text-indigo-200 transition">Theo dõi đơn hàng</a>
+                <span class="hidden sm:inline">|</span>
+                <a href="#" class="hover:text-indigo-200 transition hidden sm:inline">Hỗ trợ</a>
+            </div>
+        </div>
+    </div>
+</div>
 
-        <nav class="hidden md:flex gap-6 text-sm font-medium">
-            <a href="#" class="hover:text-indigo-600">Trang chủ</a>
-            <a href="#" class="hover:text-indigo-600">Sản phẩm</a>
-            <a href="#" class="hover:text-indigo-600">Danh mục</a>
-            <a href="#" class="hover:text-indigo-600">Liên hệ</a>
+<!-- Main Header -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="#" class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">FS</span>
+                    </div>
+                    <div class="hidden sm:block">
+                        <h1 class="text-2xl font-bold gradient-text">Fashion Store</h1>
+                        <p class="text-xs text-gray-500">Thời trang & Phong cách</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Search Bar (Desktop) -->
+            <div class="hidden lg:flex flex-1 max-w-2xl mx-8">
+                <div class="relative w-full">
+                    <input type="text" 
+                           placeholder="Tìm kiếm sản phẩm, thương hiệu..." 
+                           class="w-full px-6 py-3 pr-12 rounded-full border-2 border-gray-200 focus:border-indigo-500 focus:outline-none transition">
+                    <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-indigo-600 text-white w-10 h-10 rounded-full hover:bg-indigo-700 transition flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <a asp-controller="Home" asp-action="Login" class="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                    <span class="text-sm font-medium">Đăng nhập</span>
+                </a>
+                
+                <a href="#" class="relative p-2 hover:bg-gray-100 rounded-lg transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                    </svg>
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">3</span>
+                </a>
+
+                <a href="#" class="relative p-2 hover:bg-gray-100 rounded-lg transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                    <span class="absolute -top-1 -right-1 bg-indigo-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">5</span>
+                </a>
+
+                <button data-mobile-menu-btn class="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation (Desktop) -->
+        <nav class="hidden lg:flex items-center gap-8 py-4 border-t border-gray-100">
+            <div class="relative" data-mega-menu-trigger>
+                <button class="flex items-center gap-2 font-medium hover:text-indigo-600 transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    Danh mục sản phẩm
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+            </div>
+            <a href="#" class="font-medium hover:text-indigo-600 transition">🔥 Flash Sale</a>
+            <a href="#" class="font-medium hover:text-indigo-600 transition">Thời trang Nam</a>
+            <a href="#" class="font-medium hover:text-indigo-600 transition">Thời trang Nữ</a>
+            <a href="#" class="font-medium hover:text-indigo-600 transition">Giày dép</a>
+            <a href="#" class="font-medium hover:text-indigo-600 transition">Phụ kiện</a>
+            <a href="#" class="text-red-600 font-semibold hover:text-red-700 transition">🎁 Khuyến mãi</a>
         </nav>
+    </div>
 
-        <div class="flex items-center gap-3">
-            <a asp-controller="Home" asp-action="Login" class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100 text-sm">Đăng nhập</a>
-            <a href="#" class="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700 text-sm">Giỏ hàng</a>
+    <!-- Mega Menu -->
+    <div class="mega-menu">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4 text-indigo-600">Thời trang Nam</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-indigo-600 transition">Áo thun</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition">Áo sơ mi</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition">Quần jean</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition">Quần kaki</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition">Áo khoác</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4 text-indigo-600">Thời trang Nữ</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-indigo-600 transition">Váy đầm</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition">Áo kiểu</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition">Quần jean nữ</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition">Chân váy</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition">Áo len</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4 text-indigo-600">Giày dép</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-indigo-600 transition">Giày thể thao</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition">Giày tây</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition">Giày cao gót</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition">Dép sandal</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition">Boot</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4 text-indigo-600">Phụ kiện</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-indigo-600 transition">Túi xách</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition">Ví da</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition">Thắt lưng</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition">Mũ nón</a></li>
+                        <li><a href="#" class="hover:text-indigo-600 transition">Kính mát</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </header>
 
-<!-- Hero Section -->
-<section class="bg-gradient-to-r from-indigo-600 to-blue-500 text-white">
-    <div class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10 items-center">
-        <div>
-            <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
-                Mua sắm dễ dàng với giao diện hiện đại
-            </h2>
-            <p class="text-lg text-indigo-100 mb-8">
-                Khám phá hàng trăm sản phẩm chất lượng, giá tốt và giao hàng nhanh chóng.
-            </p>
-            <div class="flex gap-4">
-                <a href="#" class="bg-white text-indigo-600 px-6 py-3 rounded-xl font-semibold hover:bg-gray-100">
-                    Mua ngay
-                </a>
-                <a href="#" class="border border-white px-6 py-3 rounded-xl font-semibold hover:bg-white hover:text-indigo-600">
-                    Xem thêm
-                </a>
+<!-- Hero Carousel -->
+<section class="hero-carousel relative bg-gray-900">
+    <!-- Slide 1 -->
+    <div class="carousel-item active">
+        <div class="relative h-[500px] md:h-[600px]">
+            <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=1920&q=80" 
+                 alt="Fashion Collection" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
+            <div class="absolute inset-0 flex items-center">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                    <div class="max-w-2xl text-white" data-animate>
+                        <h2 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                            Bộ sưu tập<br/>Thời trang 2026
+                        </h2>
+                        <p class="text-xl mb-8 text-gray-200">
+                            Khám phá xu hướng mới nhất với hàng ngàn sản phẩm độc đáo
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#" class="bg-white text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
+                                Khám phá ngay
+                            </a>
+                            <a href="#" class="border-2 border-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-900 transition">
+                                Xem bộ sưu tập
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="carousel-item">
+        <div class="relative h-[500px] md:h-[600px]">
+            <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1920&q=80" 
+                 alt="Shoes Collection" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-indigo-900/80 to-transparent"></div>
+            <div class="absolute inset-0 flex items-center">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                    <div class="max-w-2xl text-white">
+                        <h2 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                            Giày dép<br/>Phong cách
+                        </h2>
+                        <p class="text-xl mb-8 text-indigo-100">
+                            Từ thể thao đến công sở - Tìm đôi giày hoàn hảo cho bạn
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#" class="bg-white text-indigo-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
+                                Mua ngay
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-item">
+        <div class="relative h-[500px] md:h-[600px]">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1920&q=80" 
+                 alt="Accessories" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-purple-900/80 to-transparent"></div>
+            <div class="absolute inset-0 flex items-center">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                    <div class="max-w-2xl text-white">
+                        <h2 class="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+                            Phụ kiện<br/>Hoàn hảo
+                        </h2>
+                        <p class="text-xl mb-8 text-purple-100">
+                            Hoàn thiện phong cách của bạn với các phụ kiện thời thượng
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#" class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
+                                Xem ngay
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carousel Indicators -->
+    <div class="carousel-indicators">
+        <button class="carousel-indicator active"></button>
+        <button class="carousel-indicator"></button>
+        <button class="carousel-indicator"></button>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center mb-12" data-animate>
+        <h2 class="text-4xl font-bold mb-4">Danh mục sản phẩm</h2>
+        <p class="text-gray-600 text-lg">Khám phá các danh mục thời trang phong phú</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div class="category-card group" data-animate>
+            <div class="relative h-64 md:h-80 overflow-hidden rounded-2xl">
+                <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=80" 
+                     alt="Thời trang Nam" 
+                     class="w-full h-full object-cover">
+                <div class="category-card-content">
+                    <h3 class="text-2xl font-bold mb-2">Thời trang Nam</h3>
+                    <p class="text-sm text-gray-200 mb-3">Hơn 500+ sản phẩm</p>
+                    <a href="#" class="inline-block bg-white text-gray-900 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition">
+                        Xem ngay
+                    </a>
+                </div>
             </div>
         </div>
 
-        <div class="flex justify-center">
-            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80"
-                 alt="Banner"
-                 class="rounded-2xl shadow-2xl w-full max-w-lg h-[350px] object-cover" />
+        <div class="category-card group" data-animate>
+            <div class="relative h-64 md:h-80 overflow-hidden rounded-2xl">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80" 
+                     alt="Thời trang Nữ" 
+                     class="w-full h-full object-cover">
+                <div class="category-card-content">
+                    <h3 class="text-2xl font-bold mb-2">Thời trang Nữ</h3>
+                    <p class="text-sm text-gray-200 mb-3">Hơn 800+ sản phẩm</p>
+                    <a href="#" class="inline-block bg-white text-gray-900 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition">
+                        Xem ngay
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-card group" data-animate>
+            <div class="relative h-64 md:h-80 overflow-hidden rounded-2xl">
+                <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=800&q=80" 
+                     alt="Giày dép" 
+                     class="w-full h-full object-cover">
+                <div class="category-card-content">
+                    <h3 class="text-2xl font-bold mb-2">Giày dép</h3>
+                    <p class="text-sm text-gray-200 mb-3">Hơn 300+ sản phẩm</p>
+                    <a href="#" class="inline-block bg-white text-gray-900 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition">
+                        Xem ngay
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-card group" data-animate>
+            <div class="relative h-64 md:h-80 overflow-hidden rounded-2xl">
+                <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=80" 
+                     alt="Phụ kiện" 
+                     class="w-full h-full object-cover">
+                <div class="category-card-content">
+                    <h3 class="text-2xl font-bold mb-2">Phụ kiện</h3>
+                    <p class="text-sm text-gray-200 mb-3">Hơn 200+ sản phẩm</p>
+                    <a href="#" class="inline-block bg-white text-gray-900 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition">
+                        Xem ngay
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Features -->
-<section class="max-w-7xl mx-auto px-6 py-16">
-    <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white rounded-2xl shadow p-6">
-            <h3 class="text-xl font-semibold mb-3">Sản phẩm chất lượng</h3>
-            <p class="text-gray-600">
-                Chúng tôi cung cấp các sản phẩm được chọn lọc kỹ càng, đảm bảo chất lượng tốt nhất.
-            </p>
+<!-- Flash Sale Section -->
+<section class="bg-gradient-to-r from-red-600 to-pink-600 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between mb-8 gap-6">
+            <div class="text-white text-center md:text-left">
+                <h2 class="text-4xl font-bold mb-2 flex items-center justify-center md:justify-start gap-3">
+                    <span>🔥</span> Flash Sale
+                </h2>
+                <p class="text-red-100">Giảm giá sốc - Số lượng có hạn</p>
+            </div>
+            
+            <div class="flex gap-3" data-countdown="2026-05-11T23:59:59">
+                <div class="timer-box">
+                    <span class="number" data-hours>12</span>
+                    <span class="label">Giờ</span>
+                </div>
+                <div class="timer-box">
+                    <span class="number" data-minutes>34</span>
+                    <span class="label">Phút</span>
+                </div>
+                <div class="timer-box">
+                    <span class="number" data-seconds>56</span>
+                    <span class="label">Giây</span>
+                </div>
+            </div>
         </div>
 
-        <div class="bg-white rounded-2xl shadow p-6">
-            <h3 class="text-xl font-semibold mb-3">Giao hàng nhanh</h3>
-            <p class="text-gray-600">
-                Hệ thống vận chuyển tối ưu giúp đơn hàng đến tay bạn trong thời gian ngắn.
-            </p>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+            <div class="product-card bg-white rounded-2xl overflow-hidden" data-animate>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80" 
+                         alt="Giày thể thao" 
+                         class="w-full h-48 object-cover">
+                    <span class="product-badge">-50%</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1 line-clamp-1">Giày thể thao Nike</h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-red-600 font-bold text-xl">599.000đ</span>
+                        <span class="text-gray-400 line-through text-sm">1.200.000đ</span>
+                    </div>
+                    <div class="mb-3">
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="text-gray-600">Đã bán 45/100</span>
+                            <span class="text-red-600 font-semibold">45%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-red-600 h-2 rounded-full" style="width: 45%"></div>
+                        </div>
+                    </div>
+                    <button data-add-to-cart class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition font-semibold">
+                        Mua ngay
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card bg-white rounded-2xl overflow-hidden" data-animate>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80" 
+                         alt="Áo thun" 
+                         class="w-full h-48 object-cover">
+                    <span class="product-badge">-40%</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1 line-clamp-1">Áo thun Premium</h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-red-600 font-bold text-xl">270.000đ</span>
+                        <span class="text-gray-400 line-through text-sm">450.000đ</span>
+                    </div>
+                    <div class="mb-3">
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="text-gray-600">Đã bán 68/100</span>
+                            <span class="text-red-600 font-semibold">68%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-red-600 h-2 rounded-full" style="width: 68%"></div>
+                        </div>
+                    </div>
+                    <button data-add-to-cart class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition font-semibold">
+                        Mua ngay
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card bg-white rounded-2xl overflow-hidden" data-animate>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=800&q=80" 
+                         alt="Giày cao gót" 
+                         class="w-full h-48 object-cover">
+                    <span class="product-badge">-35%</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1 line-clamp-1">Giày cao gót</h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-red-600 font-bold text-xl">650.000đ</span>
+                        <span class="text-gray-400 line-through text-sm">1.000.000đ</span>
+                    </div>
+                    <div class="mb-3">
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="text-gray-600">Đã bán 32/100</span>
+                            <span class="text-red-600 font-semibold">32%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-red-600 h-2 rounded-full" style="width: 32%"></div>
+                        </div>
+                    </div>
+                    <button data-add-to-cart class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition font-semibold">
+                        Mua ngay
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card bg-white rounded-2xl overflow-hidden" data-animate>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=80" 
+                         alt="Túi xách" 
+                         class="w-full h-48 object-cover">
+                    <span class="product-badge">-45%</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1 line-clamp-1">Túi xách thời trang</h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-red-600 font-bold text-xl">550.000đ</span>
+                        <span class="text-gray-400 line-through text-sm">1.000.000đ</span>
+                    </div>
+                    <div class="mb-3">
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="text-gray-600">Đã bán 89/100</span>
+                            <span class="text-red-600 font-semibold">89%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-red-600 h-2 rounded-full" style="width: 89%"></div>
+                        </div>
+                    </div>
+                    <button data-add-to-cart class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition font-semibold">
+                        Mua ngay
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card bg-white rounded-2xl overflow-hidden" data-animate>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80" 
+                         alt="Kính mát" 
+                         class="w-full h-48 object-cover">
+                    <span class="product-badge">-30%</span>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg mb-1 line-clamp-1">Kính mát UV400</h3>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-red-600 font-bold text-xl">350.000đ</span>
+                        <span class="text-gray-400 line-through text-sm">500.000đ</span>
+                    </div>
+                    <div class="mb-3">
+                        <div class="flex justify-between text-xs mb-1">
+                            <span class="text-gray-600">Đã bán 56/100</span>
+                            <span class="text-red-600 font-semibold">56%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-red-600 h-2 rounded-full" style="width: 56%"></div>
+                        </div>
+                    </div>
+                    <button data-add-to-cart class="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition font-semibold">
+                        Mua ngay
+                    </button>
+                </div>
+            </div>
         </div>
 
-        <div class="bg-white rounded-2xl shadow p-6">
-            <h3 class="text-xl font-semibold mb-3">Hỗ trợ 24/7</h3>
-            <p class="text-gray-600">
-                Đội ngũ hỗ trợ luôn sẵn sàng giải đáp mọi thắc mắc trong quá trình mua sắm.
-            </p>
+        <div class="text-center mt-8">
+            <a href="#" class="inline-block bg-white text-red-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+                Xem tất cả Flash Sale
+            </a>
         </div>
     </div>
 </section>
 
 <!-- Featured Products -->
-<section class="max-w-7xl mx-auto px-6 pb-16">
-    <div class="flex items-center justify-between mb-8">
-        <h2 class="text-3xl font-bold">Sản phẩm nổi bật</h2>
-        <a href="#" class="text-indigo-600 font-medium hover:underline">Xem tất cả</a>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10" data-animate>
+        <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.3em] text-indigo-600">Editor's Pick</p>
+            <h2 class="mt-2 text-4xl font-bold text-gray-900">Sản phẩm nổi bật</h2>
+            <p class="mt-3 text-gray-600">Những thiết kế bán chạy dành cho phong cách thường ngày, công sở và đường phố.</p>
+        </div>
+        <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 hover:text-indigo-700 transition">
+            Xem toàn bộ bộ sưu tập
+            <span aria-hidden="true">→</span>
+        </a>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80"
-                 class="h-52 w-full object-cover" alt="Sản phẩm 1" />
-            <div class="p-4">
-                <h3 class="font-semibold text-lg">Giày thể thao</h3>
-                <p class="text-gray-500 text-sm mt-1">Thiết kế năng động, trẻ trung</p>
-                <div class="mt-4 flex items-center justify-between">
-                    <span class="text-indigo-600 font-bold">1.200.000đ</span>
-                    <button class="px-3 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm">
-                        Mua
-                    </button>
+    <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
+        <article class="product-card rounded-3xl bg-white shadow-sm border border-gray-100" data-animate>
+            <div class="relative overflow-hidden rounded-t-3xl">
+                <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=900&q=80" alt="Blazer nữ hiện đại" class="h-80 w-full object-cover" />
+                <span class="product-badge">New</span>
+            </div>
+            <div class="p-5">
+                <div class="flex items-center justify-between text-xs text-gray-500">
+                    <span>Blazer</span>
+                    <span>4.9/5</span>
                 </div>
+                <h3 class="mt-2 text-xl font-semibold text-gray-900">Blazer kem dáng suông</h3>
+                <p class="mt-2 text-sm text-gray-600">Phom đứng chuẩn, dễ phối với chân váy, quần tây hoặc denim.</p>
+                <div class="mt-5 flex items-center justify-between">
+                    <div>
+                        <p class="text-lg font-bold text-gray-900">1.490.000đ</p>
+                        <p class="text-sm text-gray-400 line-through">1.790.000đ</p>
+                    </div>
+                    <button data-add-to-cart class="rounded-full bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-600 transition">Thêm giỏ</button>
+                </div>
+            </div>
+        </article>
+
+        <article class="product-card rounded-3xl bg-white shadow-sm border border-gray-100" data-animate>
+            <div class="relative overflow-hidden rounded-t-3xl">
+                <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=900&q=80" alt="Sneaker trắng tối giản" class="h-80 w-full object-cover" />
+                <span class="product-badge">Hot</span>
+            </div>
+            <div class="p-5">
+                <div class="flex items-center justify-between text-xs text-gray-500">
+                    <span>Sneaker</span>
+                    <span>Top Seller</span>
+                </div>
+                <h3 class="mt-2 text-xl font-semibold text-gray-900">Sneaker trắng minimal</h3>
+                <p class="mt-2 text-sm text-gray-600">Thiết kế tối giản, đế êm và phù hợp cả đi làm lẫn đi chơi.</p>
+                <div class="mt-5 flex items-center justify-between">
+                    <div>
+                        <p class="text-lg font-bold text-gray-900">1.250.000đ</p>
+                        <p class="text-sm text-gray-400 line-through">1.450.000đ</p>
+                    </div>
+                    <button data-add-to-cart class="rounded-full bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-600 transition">Thêm giỏ</button>
+                </div>
+            </div>
+        </article>
+
+        <article class="product-card rounded-3xl bg-white shadow-sm border border-gray-100" data-animate>
+            <div class="relative overflow-hidden rounded-t-3xl">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80" alt="Đầm dự tiệc sang trọng" class="h-80 w-full object-cover" />
+                <span class="product-badge">-20%</span>
+            </div>
+            <div class="p-5">
+                <div class="flex items-center justify-between text-xs text-gray-500">
+                    <span>Dress</span>
+                    <span>Limited</span>
+                </div>
+                <h3 class="mt-2 text-xl font-semibold text-gray-900">Đầm satin dự tiệc</h3>
+                <p class="mt-2 text-sm text-gray-600">Chất liệu rủ nhẹ, nổi bật ở các buổi tiệc tối và sự kiện.</p>
+                <div class="mt-5 flex items-center justify-between">
+                    <div>
+                        <p class="text-lg font-bold text-gray-900">1.890.000đ</p>
+                        <p class="text-sm text-gray-400 line-through">2.390.000đ</p>
+                    </div>
+                    <button data-add-to-cart class="rounded-full bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-600 transition">Thêm giỏ</button>
+                </div>
+            </div>
+        </article>
+
+        <article class="product-card rounded-3xl bg-white shadow-sm border border-gray-100" data-animate>
+            <div class="relative overflow-hidden rounded-t-3xl">
+                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=900&q=80" alt="Túi xách da nữ" class="h-80 w-full object-cover" />
+                <span class="product-badge">Premium</span>
+            </div>
+            <div class="p-5">
+                <div class="flex items-center justify-between text-xs text-gray-500">
+                    <span>Bag</span>
+                    <span>Mới về</span>
+                </div>
+                <h3 class="mt-2 text-xl font-semibold text-gray-900">Túi da khóa vàng</h3>
+                <p class="mt-2 text-sm text-gray-600">Kích thước gọn, phối cùng outfit thanh lịch hoặc smart casual.</p>
+                <div class="mt-5 flex items-center justify-between">
+                    <div>
+                        <p class="text-lg font-bold text-gray-900">980.000đ</p>
+                        <p class="text-sm text-gray-400 line-through">1.180.000đ</p>
+                    </div>
+                    <button data-add-to-cart class="rounded-full bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-600 transition">Thêm giỏ</button>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<!-- Style Banner -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="grid lg:grid-cols-[1.3fr_0.7fr] gap-6">
+        <div class="rounded-[2rem] bg-gray-900 text-white overflow-hidden" data-animate>
+            <div class="grid md:grid-cols-2 items-center">
+                <div class="p-8 md:p-12">
+                    <p class="text-sm uppercase tracking-[0.3em] text-indigo-300">Bộ sưu tập đô thị</p>
+                    <h2 class="mt-3 text-4xl font-bold leading-tight">Phối đồ nhanh cho tuần làm việc và cuối tuần.</h2>
+                    <p class="mt-4 text-gray-300">Từ blazer, quần jeans đến sneaker, mọi lựa chọn được tuyển chọn để bạn lên đồ nhanh nhưng vẫn chỉn chu.</p>
+                    <a href="#" class="mt-8 inline-flex rounded-full bg-white px-6 py-3 font-semibold text-gray-900 hover:bg-gray-100 transition">Khám phá phong cách</a>
+                </div>
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80" alt="Urban capsule" class="h-full min-h-[320px] w-full object-cover" />
             </div>
         </div>
 
-        <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80"
-                 class="h-52 w-full object-cover" alt="Sản phẩm 2" />
-            <div class="p-4">
-                <h3 class="font-semibold text-lg">Áo thời trang</h3>
-                <p class="text-gray-500 text-sm mt-1">Phong cách hiện đại, dễ phối đồ</p>
-                <div class="mt-4 flex items-center justify-between">
-                    <span class="text-indigo-600 font-bold">450.000đ</span>
-                    <button class="px-3 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm">
-                        Mua
-                    </button>
-                </div>
-            </div>
+        <div class="rounded-[2rem] bg-gradient-to-br from-indigo-600 to-purple-600 p-8 text-white" data-animate>
+            <p class="text-sm uppercase tracking-[0.3em] text-indigo-100">Câu lạc bộ thành viên</p>
+            <h3 class="mt-4 text-3xl font-bold">Tích điểm cho mọi đơn hàng.</h3>
+            <p class="mt-4 text-indigo-100">Nhận voucher sinh nhật, freeship và ưu tiên truy cập bộ sưu tập mới trước 48 giờ.</p>
+            <ul class="mt-6 space-y-3 text-sm text-indigo-50">
+                <li>Miễn phí đổi size trong 7 ngày</li>
+                <li>Tích điểm lên đến 8% giá trị đơn hàng</li>
+                <li>Voucher độc quyền mỗi tháng</li>
+            </ul>
+            <a asp-controller="Home" asp-action="Login" class="mt-8 inline-flex rounded-full bg-white px-6 py-3 font-semibold text-indigo-600 hover:bg-gray-100 transition">Tham gia ngay</a>
         </div>
+    </div>
+</section>
 
-        <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1526178613552-2b45c6c302f0?auto=format&fit=crop&w=800&q=80"
-                 class="h-52 w-full object-cover" alt="Sản phẩm 3" />
-            <div class="p-4">
-                <h3 class="font-semibold text-lg">Máy ảnh mini</h3>
-                <p class="text-gray-500 text-sm mt-1">Nhỏ gọn, chụp ảnh sắc nét</p>
-                <div class="mt-4 flex items-center justify-between">
-                    <span class="text-indigo-600 font-bold">2.800.000đ</span>
-                    <button class="px-3 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm">
-                        Mua
-                    </button>
-                </div>
-            </div>
+<!-- Brands -->
+<section class="bg-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10" data-animate>
+            <p class="text-sm font-semibold uppercase tracking-[0.3em] text-gray-400">Thương hiệu đồng hành</p>
+            <h2 class="mt-3 text-3xl font-bold text-gray-900">Thương hiệu được yêu thích</h2>
         </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <div class="brand-logo rounded-2xl border border-gray-100 bg-gray-50 p-6 text-center text-lg font-semibold text-gray-700">Urban Step</div>
+            <div class="brand-logo rounded-2xl border border-gray-100 bg-gray-50 p-6 text-center text-lg font-semibold text-gray-700">Monarch Wear</div>
+            <div class="brand-logo rounded-2xl border border-gray-100 bg-gray-50 p-6 text-center text-lg font-semibold text-gray-700">Eclat Studio</div>
+            <div class="brand-logo rounded-2xl border border-gray-100 bg-gray-50 p-6 text-center text-lg font-semibold text-gray-700">Nova Leather</div>
+        </div>
+    </div>
+</section>
 
-        <div class="bg-white rounded-2xl shadow hover:shadow-lg transition overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80"
-                 class="h-52 w-full object-cover" alt="Sản phẩm 4" />
-            <div class="p-4">
-                <h3 class="font-semibold text-lg">Tai nghe</h3>
-                <p class="text-gray-500 text-sm mt-1">Âm thanh tốt, thiết kế sang trọng</p>
-                <div class="mt-4 flex items-center justify-between">
-                    <span class="text-indigo-600 font-bold">990.000đ</span>
-                    <button class="px-3 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm">
-                        Mua
-                    </button>
+<!-- Testimonials -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center mb-12" data-animate>
+        <p class="text-sm font-semibold uppercase tracking-[0.3em] text-indigo-600">Đánh giá</p>
+        <h2 class="mt-3 text-4xl font-bold text-gray-900">Khách hàng nói gì về Fashion Store</h2>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-6">
+        <article class="testimonial-card" data-animate>
+            <div class="flex items-center gap-4">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80" alt="Khách hàng Linh" class="h-14 w-14 rounded-full object-cover" />
+                <div>
+                    <h3 class="font-semibold text-gray-900">Ngọc Linh</h3>
+                    <p class="text-sm text-gray-500">Content Creator</p>
                 </div>
             </div>
-        </div>
+            <p class="mt-5 text-gray-600">Form áo blazer và chân váy rất dễ mặc, chất liệu lên hình đẹp. Đơn hàng đóng gói kỹ và giao nhanh hơn mong đợi.</p>
+        </article>
+
+        <article class="testimonial-card" data-animate>
+            <div class="flex items-center gap-4">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Khách hàng Minh" class="h-14 w-14 rounded-full object-cover" />
+                <div>
+                    <h3 class="font-semibold text-gray-900">Quang Minh</h3>
+                    <p class="text-sm text-gray-500">Marketing Lead</p>
+                </div>
+            </div>
+            <p class="mt-5 text-gray-600">Giày sneaker đi êm chân, phối được nhiều outfit. Trang chủ mới nhìn sang hơn và tìm sản phẩm cũng dễ hơn rất nhiều.</p>
+        </article>
+
+        <article class="testimonial-card" data-animate>
+            <div class="flex items-center gap-4">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Khách hàng Hà" class="h-14 w-14 rounded-full object-cover" />
+                <div>
+                    <h3 class="font-semibold text-gray-900">Thu Hà</h3>
+                    <p class="text-sm text-gray-500">Stylist</p>
+                </div>
+            </div>
+            <p class="mt-5 text-gray-600">Mục phối đồ và danh mục được trình bày rõ ràng, tạo cảm giác như một fashion marketplace chuyên nghiệp thực sự.</p>
+        </article>
     </div>
 </section>
 
 <!-- CTA -->
-<section class="bg-indigo-600 text-white">
-    <div class="max-w-7xl mx-auto px-6 py-16 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Sẵn sàng mua sắm chưa?</h2>
-        <p class="text-indigo-100 mb-6">
-            Đăng ký ngay để nhận ưu đãi và cập nhật sản phẩm mới nhất.
-        </p>
-        <a asp-controller="Home" asp-action="Login" class="inline-block bg-white text-indigo-600 px-6 py-3 rounded-xl font-semibold hover:bg-gray-100">
-            Bắt đầu ngay
-        </a>
+<section class="pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="overflow-hidden rounded-[2rem] bg-gradient-to-r from-gray-900 via-indigo-900 to-purple-900 px-8 py-12 text-white md:px-12" data-animate>
+            <div class="grid lg:grid-cols-[1fr_auto] items-center gap-8">
+                <div>
+                    <p class="text-sm uppercase tracking-[0.3em] text-indigo-200">Tham gia Fashion Store</p>
+                    <h2 class="mt-3 text-4xl font-bold">Nhận ưu đãi cho đơn hàng đầu tiên và cập nhật xu hướng mới mỗi tuần.</h2>
+                    <p class="mt-4 max-w-2xl text-gray-300">Đăng ký tài khoản để lưu sản phẩm yêu thích, theo dõi đơn hàng và nhận ưu đãi riêng theo hành vi mua sắm.</p>
+                </div>
+                <a asp-controller="Home" asp-action="Login" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-base font-semibold text-gray-900 hover:bg-gray-100 transition">Bắt đầu ngay</a>
+            </div>
+        </div>
     </div>
 </section>
 
 <!-- Footer -->
-<footer class="bg-gray-900 text-gray-300">
-    <div class="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-8">
-        <div>
-            <h3 class="text-xl font-bold text-white mb-3">DATN Shop</h3>
-            <p class="text-sm">
-                Website thương mại điện tử xây dựng bằng ASP.NET Core MVC và Tailwind CSS.
-            </p>
+<footer class="bg-gray-950 text-gray-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div class="grid gap-10 lg:grid-cols-4">
+            <div>
+                <div class="flex items-center gap-3">
+                    <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 text-lg font-bold text-white">FS</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Fashion Store</h3>
+                        <p class="text-sm text-gray-400">Marketplace thời trang và giày dép</p>
+                    </div>
+                </div>
+                <p class="mt-5 text-sm text-gray-400">Nền tảng mua sắm thời trang hiện đại dành cho người dùng yêu sự chỉn chu, tiện lợi và cập nhật xu hướng nhanh.</p>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-semibold uppercase tracking-[0.3em] text-white">Danh mục</h4>
+                <ul class="mt-5 space-y-3 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition">Thời trang nam</a></li>
+                    <li><a href="#" class="hover:text-white transition">Thời trang nữ</a></li>
+                    <li><a href="#" class="hover:text-white transition">Giày dép</a></li>
+                    <li><a href="#" class="hover:text-white transition">Phụ kiện</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-semibold uppercase tracking-[0.3em] text-white">Hỗ trợ</h4>
+                <ul class="mt-5 space-y-3 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition">Chính sách đổi trả</a></li>
+                    <li><a href="#" class="hover:text-white transition">Hướng dẫn chọn size</a></li>
+                    <li><a href="#" class="hover:text-white transition">Vận chuyển và thanh toán</a></li>
+                    <li><a href="#" class="hover:text-white transition">Câu hỏi thường gặp</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-sm font-semibold uppercase tracking-[0.3em] text-white">Liên hệ</h4>
+                <ul class="mt-5 space-y-3 text-sm text-gray-400">
+                    <li>support@fashionstore.vn</li>
+                    <li>1900-xxxx</li>
+                    <li>98 Nguyen Van Cu, Q.1, TP.HCM</li>
+                    <li>08:30 - 22:00 mỗi ngày</li>
+                </ul>
+            </div>
         </div>
 
-        <div>
-            <h4 class="text-white font-semibold mb-3">Liên kết</h4>
-            <ul class="space-y-2 text-sm">
-                <li><a href="#" class="hover:text-white">Trang chủ</a></li>
-                <li><a href="#" class="hover:text-white">Sản phẩm</a></li>
-                <li><a href="#" class="hover:text-white">Giới thiệu</a></li>
-                <li><a href="#" class="hover:text-white">Liên hệ</a></li>
-            </ul>
+        <div class="mt-10 border-t border-white/10 pt-6 text-sm text-gray-500 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <p>© 2026 Fashion Store. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-white transition">Điều khoản</a>
+                <a href="#" class="hover:text-white transition">Bảo mật</a>
+                <a asp-controller="Home" asp-action="Privacy" class="hover:text-white transition">Privacy</a>
+            </div>
         </div>
-
-        <div>
-            <h4 class="text-white font-semibold mb-3">Liên hệ</h4>
-            <p class="text-sm">Email: support@datnshop.com</p>
-            <p class="text-sm">Hotline: 0123 456 789</p>
-        </div>
-    </div>
-
-    <div class="border-t border-gray-800 text-center text-sm py-4">
-        © 2026 DATN Shop. All rights reserved.
     </div>
 </footer>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu-overlay"></div>
+<aside class="mobile-menu p-6 lg:hidden">
+    <div class="flex items-center justify-between border-b border-gray-100 pb-4">
+        <div>
+            <p class="text-lg font-bold text-gray-900">Fashion Store</p>
+            <p class="text-sm text-gray-500">Danh mục và ưu đãi</p>
+        </div>
+        <button data-mobile-menu-close class="rounded-lg p-2 hover:bg-gray-100 transition" aria-label="Đóng menu">
+            <span class="text-2xl leading-none">×</span>
+        </button>
+    </div>
+
+    <nav class="mt-6 space-y-4 text-sm font-medium text-gray-700">
+        <a href="#" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Flash Sale</a>
+        <a href="#" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Thời trang nam</a>
+        <a href="#" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Thời trang nữ</a>
+        <a href="#" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Giày dép</a>
+        <a href="#" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Phụ kiện</a>
+        <a asp-controller="Home" asp-action="Login" class="block rounded-xl bg-indigo-600 px-4 py-3 text-center text-white hover:bg-indigo-700 transition">Đăng nhập</a>
+    </nav>
+</aside>
+
+<button class="scroll-to-top" aria-label="Lên đầu trang">↑</button>

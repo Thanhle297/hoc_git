@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,47 +10,166 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 @{
-        var controller = ViewContext.RouteData.Values["Controller"]?.ToString();
-        var action = ViewContext.RouteData.Values["Action"]?.ToString();
-        var isHomePage = string.Equals(controller, "Home", StringComparison.OrdinalIgnoreCase)
-            && string.Equals(action, "Index", StringComparison.OrdinalIgnoreCase);
+    var controller = ViewContext.RouteData.Values["Controller"]?.ToString();
+    var action = ViewContext.RouteData.Values["Action"]?.ToString();
+    var isHomePage = string.Equals(controller, "Home", StringComparison.OrdinalIgnoreCase)
+        && string.Equals(action, "Index", StringComparison.OrdinalIgnoreCase);
+    var isLoginPage = string.Equals(controller, "Home", StringComparison.OrdinalIgnoreCase)
+        && string.Equals(action, "Login", StringComparison.OrdinalIgnoreCase);
+    var isStandalonePage = isHomePage || isLoginPage;
 }
-<body class="@(isHomePage ? "home-page" : "has-layout-footer")">
+<body class="@(isHomePage ? "home-page" : isStandalonePage ? string.Empty : "has-layout-footer")">
 
-    @if (!isHomePage)
+    @if (!isStandalonePage)
     {
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
-                <div class="container-fluid">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DATN</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                            </li>
-                        </ul>
+        <div class="site-shell">
+            <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
+                <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+                    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 text-xs sm:px-6 lg:px-8 sm:text-sm">
+                        <div class="flex items-center gap-4 sm:gap-6">
+                            <span>Hotline: 1900-xxxx</span>
+                            <span class="hidden md:inline">Email: support@fashionstore.vn</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <a href="#" class="transition hover:text-indigo-100">Theo dõi đơn hàng</a>
+                            <a href="#" class="hidden transition hover:text-indigo-100 sm:inline">Hỗ trợ</a>
+                        </div>
                     </div>
                 </div>
-            </nav>
-        </header>
-        <div class="container">
-            <main role="main" class="py-3">
-                @RenderBody()
-            </main>
-        </div>
 
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2026 - DATN - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
-        </footer>
+                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col gap-4 py-4 lg:flex-row lg:items-center lg:justify-between">
+                        <div class="flex items-center justify-between gap-4">
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="flex items-center gap-3">
+                                <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 text-xl font-bold text-white shadow-lg shadow-indigo-200/70">FS</div>
+                                <div>
+                                    <p class="text-2xl font-bold gradient-text">Fashion Store</p>
+                                    <p class="text-xs text-slate-500">Thời trang &amp; Phong cách</p>
+                                </div>
+                            </a>
+
+                            <a asp-area="" asp-controller="Home" asp-action="Login" class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-indigo-200 hover:text-indigo-600 lg:hidden">
+                                Đăng nhập
+                            </a>
+                        </div>
+
+                        <div class="flex-1 lg:mx-8 lg:max-w-2xl">
+                            <div class="relative">
+                                <input type="text"
+                                       placeholder="Tìm kiếm sản phẩm, thương hiệu..."
+                                       class="w-full rounded-full border border-slate-200 bg-slate-50 px-5 py-3 pr-12 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-100" />
+                                <button type="button" class="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-indigo-600 text-white transition hover:bg-indigo-700" aria-label="Tìm kiếm">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="hidden items-center gap-3 lg:flex">
+                            <a asp-area="" asp-controller="Home" asp-action="Login" class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-indigo-200 hover:text-indigo-600">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                </svg>
+                                <span>Đăng nhập</span>
+                            </a>
+                            <a href="#" class="relative rounded-full border border-slate-200 p-3 text-slate-700 transition hover:border-indigo-200 hover:text-indigo-600" aria-label="Yêu thích">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                                <span class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-rose-500 text-[11px] font-semibold text-white">3</span>
+                            </a>
+                            <a href="#" class="relative rounded-full border border-slate-200 p-3 text-slate-700 transition hover:border-indigo-200 hover:text-indigo-600" aria-label="Giỏ hàng">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                                <span class="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-indigo-600 text-[11px] font-semibold text-white">5</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <nav class="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-slate-100 py-4 text-sm font-medium text-slate-700">
+                        <a asp-area="" asp-controller="Home" asp-action="Index" class="site-nav-link">Trang chủ</a>
+                        <a href="#" class="site-nav-link">Danh mục sản phẩm</a>
+                        <a href="#" class="site-nav-link">Thời trang Nam</a>
+                        <a href="#" class="site-nav-link">Thời trang Nữ</a>
+                        <a href="#" class="site-nav-link">Giày dép</a>
+                        <a href="#" class="site-nav-link">Phụ kiện</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Privacy" class="site-nav-link">Chính sách</a>
+                        <a href="#" class="font-semibold text-rose-600 transition hover:text-rose-700">Khuyến mãi</a>
+                    </nav>
+                </div>
+            </header>
+
+            <main role="main" class="site-content">
+                <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+                    <div class="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm">
+                        <div class="border-b border-slate-100 bg-slate-50/70 px-6 py-5">
+                            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-600">Fashion Store</p>
+                            <h1 class="mt-2 text-3xl font-bold text-slate-900">@ViewData["Title"]</h1>
+                        </div>
+
+                        <div class="px-6 py-8 sm:px-8">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="border-t border-slate-200 bg-slate-950 text-slate-300">
+                <div class="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+                    <div>
+                        <div class="mb-4 flex items-center gap-3">
+                            <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 text-lg font-bold text-white">FS</div>
+                            <div>
+                                <p class="text-lg font-bold text-white">Fashion Store</p>
+                                <p class="text-sm text-slate-400">Phong cách cho mọi ngày</p>
+                            </div>
+                        </div>
+                        <p class="text-sm leading-6 text-slate-400">
+                            Nền tảng mua sắm thời trang và giày dép hiện đại, tập trung vào trải nghiệm trực quan và thuận tiện cho người dùng.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-white">Khám phá</h2>
+                        <div class="mt-4 space-y-3 text-sm">
+                            <a asp-area="" asp-controller="Home" asp-action="Index" class="site-footer-link">Trang chủ</a>
+                            <a href="#" class="site-footer-link">Sản phẩm nổi bật</a>
+                            <a href="#" class="site-footer-link">Bộ sưu tập mới</a>
+                            <a href="#" class="site-footer-link">Khuyến mãi</a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-white">Hỗ trợ khách hàng</h2>
+                        <div class="mt-4 space-y-3 text-sm">
+                            <a asp-area="" asp-controller="Home" asp-action="Privacy" class="site-footer-link">Chính sách bảo mật</a>
+                            <a href="#" class="site-footer-link">Đổi trả và hoàn tiền</a>
+                            <a href="#" class="site-footer-link">Vận chuyển</a>
+                            <a href="#" class="site-footer-link">Theo dõi đơn hàng</a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-white">Liên hệ</h2>
+                        <div class="mt-4 space-y-3 text-sm text-slate-400">
+                            <p>Hotline: 1900-xxxx</p>
+                            <p>Email: support@fashionstore.vn</p>
+                            <p>Địa chỉ: 123 Nguyễn Trãi, Hà Nội</p>
+                            <p>Giờ hỗ trợ: 08:00 - 22:00 mỗi ngày</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-white/10">
+                    <div class="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-5 text-sm text-slate-400 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+                        <p>&copy; 2026 Fashion Store. Bản quyền thuộc về DATN.</p>
+                        <p>Thiết kế dành cho đồ án sàn thương mại điện tử thời trang.</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
     }
     else
     {
