@@ -16,7 +16,9 @@
         && string.Equals(action, "Index", StringComparison.OrdinalIgnoreCase);
     var isLoginPage = string.Equals(controller, "Home", StringComparison.OrdinalIgnoreCase)
         && string.Equals(action, "Login", StringComparison.OrdinalIgnoreCase);
-    var isStandalonePage = isHomePage || isLoginPage;
+    var isRegisterPage = string.Equals(controller, "Home", StringComparison.OrdinalIgnoreCase)
+        && string.Equals(action, "Register", StringComparison.OrdinalIgnoreCase);
+    var isStandalonePage = isHomePage || isLoginPage || isRegisterPage;
 }
 <body class="@(isHomePage ? "home-page" : isStandalonePage ? string.Empty : "has-layout-footer")">
 
@@ -48,31 +50,60 @@
                                 </div>
                             </a>
 
-                            <a asp-area="" asp-controller="Home" asp-action="Login" class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-indigo-200 hover:text-indigo-600 lg:hidden">
-                                Đăng nhập
-                            </a>
+                            @if (User.Identity?.IsAuthenticated == true)
+                            {
+                                <form asp-area="" asp-controller="Home" asp-action="Logout" method="post" class="lg:hidden">
+                                    <button type="submit" class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-indigo-200 hover:text-indigo-600">
+                                        Đăng xuất
+                                    </button>
+                                </form>
+                            }
+                            else
+                            {
+                                <a asp-area="" asp-controller="Home" asp-action="Login" class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-indigo-200 hover:text-indigo-600 lg:hidden">
+                                    Đăng nhập
+                                </a>
+                            }
                         </div>
 
                         <div class="flex-1 lg:mx-8 lg:max-w-2xl">
-                            <div class="relative">
+                            <form asp-area="" asp-controller="Products" asp-action="Search" method="get" class="relative">
                                 <input type="text"
+                                       name="q"
                                        placeholder="Tìm kiếm sản phẩm, thương hiệu..."
                                        class="w-full rounded-full border border-slate-200 bg-slate-50 px-5 py-3 pr-12 text-sm text-slate-700 outline-none transition focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-100" />
-                                <button type="button" class="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-indigo-600 text-white transition hover:bg-indigo-700" aria-label="Tìm kiếm">
+                                <button type="submit" class="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-indigo-600 text-white transition hover:bg-indigo-700" aria-label="Tìm kiếm">
                                     <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                     </svg>
                                 </button>
-                            </div>
+                            </form>
                         </div>
 
                         <div class="hidden items-center gap-3 lg:flex">
-                            <a asp-area="" asp-controller="Home" asp-action="Login" class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-indigo-200 hover:text-indigo-600">
-                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                                </svg>
-                                <span>Đăng nhập</span>
-                            </a>
+                            @if (User.Identity?.IsAuthenticated == true)
+                            {
+                                <div class="inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-700">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                    </svg>
+                                    <span>@(User.Identity?.Name ?? "Tài khoản")</span>
+                                </div>
+                                <form asp-area="" asp-controller="Home" asp-action="Logout" method="post">
+                                    <button type="submit" class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-indigo-200 hover:text-indigo-600">
+                                        Đăng xuất
+                                    </button>
+                                </form>
+                            }
+                            else
+                            {
+                                <a asp-area="" asp-controller="Home" asp-action="Login" class="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-indigo-200 hover:text-indigo-600">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                    </svg>
+                                    <span>Đăng nhập</span>
+                                </a>
+                            }
                             <a href="#" class="relative rounded-full border border-slate-200 p-3 text-slate-700 transition hover:border-indigo-200 hover:text-indigo-600" aria-label="Yêu thích">
                                 <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
@@ -90,11 +121,11 @@
 
                     <nav class="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-slate-100 py-4 text-sm font-medium text-slate-700">
                         <a asp-area="" asp-controller="Home" asp-action="Index" class="site-nav-link">Trang chủ</a>
-                        <a href="#" class="site-nav-link">Danh mục sản phẩm</a>
-                        <a href="#" class="site-nav-link">Thời trang Nam</a>
-                        <a href="#" class="site-nav-link">Thời trang Nữ</a>
-                        <a href="#" class="site-nav-link">Giày dép</a>
-                        <a href="#" class="site-nav-link">Phụ kiện</a>
+                        <a asp-area="" asp-controller="Products" asp-action="Index" class="site-nav-link">Danh mục sản phẩm</a>
+                        <a asp-area="" asp-controller="Products" asp-action="Search" asp-route-q="Nam" class="site-nav-link">Thời trang Nam</a>
+                        <a asp-area="" asp-controller="Products" asp-action="Search" asp-route-q="Nữ" class="site-nav-link">Thời trang Nữ</a>
+                        <a asp-area="" asp-controller="Categories" asp-action="Index" class="site-nav-link">Giày dép</a>
+                        <a asp-area="" asp-controller="Products" asp-action="Search" asp-route-q="Phụ kiện" class="site-nav-link">Phụ kiện</a>
                         <a asp-area="" asp-controller="Home" asp-action="Privacy" class="site-nav-link">Chính sách</a>
                         <a href="#" class="font-semibold text-rose-600 transition hover:text-rose-700">Khuyến mãi</a>
                     </nav>
@@ -135,7 +166,7 @@
                         <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-white">Khám phá</h2>
                         <div class="mt-4 space-y-3 text-sm">
                             <a asp-area="" asp-controller="Home" asp-action="Index" class="site-footer-link">Trang chủ</a>
-                            <a href="#" class="site-footer-link">Sản phẩm nổi bật</a>
+                            <a asp-area="" asp-controller="Products" asp-action="Index" class="site-footer-link">Sản phẩm nổi bật</a>
                             <a href="#" class="site-footer-link">Bộ sưu tập mới</a>
                             <a href="#" class="site-footer-link">Khuyến mãi</a>
                         </div>

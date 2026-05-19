@@ -1,0 +1,132 @@
+@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Đăng ký";
+}
+
+<section class="site-auth-section">
+    <div class="mx-auto w-full max-w-5xl overflow-hidden rounded-3xl bg-white shadow-2xl ring-1 ring-slate-200 lg:grid lg:grid-cols-2">
+        <div class="hidden lg:flex flex-col justify-between bg-gradient-to-br from-emerald-600 to-teal-500 p-10 text-white">
+            <div>
+                <a asp-controller="Home" asp-action="Index" class="site-back-link inline-flex items-center gap-2 text-sm font-semibold text-emerald-100 hover:text-white">
+                    <span aria-hidden="true">&#8592;</span>
+                    Quay về trang chủ
+                </a>
+                <h1 class="mt-8 text-4xl font-bold leading-tight">Tham gia cùng chúng tôi</h1>
+                <p class="mt-4 text-emerald-100">
+                    Tạo tài khoản để mua sắm dễ dàng hơn, theo dõi đơn hàng và nhận nhiều ưu đãi hấp dẫn.
+                </p>
+            </div>
+            <div class="rounded-2xl bg-white/15 p-5 backdrop-blur-sm">
+                <p class="text-sm text-emerald-100">Tại sao nên đăng ký?</p>
+                <ul class="mt-2 space-y-2 text-sm font-medium">
+                    <li>&check; Theo dõi đơn hàng dễ dàng</li>
+                    <li>&check; Lưu danh sách yêu thích</li>
+                    <li>&check; Ưu đãi dành riêng thành viên</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="p-6 sm:p-10 lg:p-12">
+            <div class="mx-auto w-full max-w-md">
+                <a asp-controller="Home" asp-action="Index" class="site-back-link mb-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 hover:text-emerald-700 lg:hidden">
+                    <span aria-hidden="true">&#8592;</span>
+                    Về trang chủ
+                </a>
+
+                <span class="site-kicker">Khu vực thành viên</span>
+                <h2 class="mt-4 text-3xl font-bold text-slate-900">Đăng ký tài khoản</h2>
+                <p class="mt-2 text-sm text-slate-500">Điền thông tin bên dưới để bắt đầu.</p>
+
+                <form class="mt-8 space-y-5" asp-controller="Home" asp-action="Register" method="post">
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div asp-validation-summary="ModelOnly" class="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"></div>
+                    }
+
+                    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                        <div>
+                            <label asp-for="FirstName" class="mb-2 block text-sm font-semibold text-slate-700"></label>
+                            <input
+                                asp-for="FirstName"
+                                placeholder="Nguyễn"
+                                class="site-input" />
+                            <span asp-validation-for="FirstName" class="mt-1 block text-sm text-red-600"></span>
+                        </div>
+                        <div>
+                            <label asp-for="LastName" class="mb-2 block text-sm font-semibold text-slate-700"></label>
+                            <input
+                                asp-for="LastName"
+                                placeholder="Văn A"
+                                class="site-input" />
+                            <span asp-validation-for="LastName" class="mt-1 block text-sm text-red-600"></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label asp-for="Email" class="mb-2 block text-sm font-semibold text-slate-700"></label>
+                        <input
+                            asp-for="Email"
+                            autocomplete="email"
+                            placeholder="ban@example.com"
+                            class="site-input" />
+                        <span asp-validation-for="Email" class="mt-1 block text-sm text-red-600"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="PhoneNumber" class="mb-2 block text-sm font-semibold text-slate-700"></label>
+                        <input
+                            asp-for="PhoneNumber"
+                            placeholder="0901 234 567"
+                            class="site-input" />
+                        <span asp-validation-for="PhoneNumber" class="mt-1 block text-sm text-red-600"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="Password" class="mb-2 block text-sm font-semibold text-slate-700"></label>
+                        <input
+                            asp-for="Password"
+                            autocomplete="new-password"
+                            placeholder="Tối thiểu 6 ký tự"
+                            class="site-input" />
+                        <span asp-validation-for="Password" class="mt-1 block text-sm text-red-600"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="ConfirmPassword" class="mb-2 block text-sm font-semibold text-slate-700"></label>
+                        <input
+                            asp-for="ConfirmPassword"
+                            autocomplete="new-password"
+                            placeholder="Nhập lại mật khẩu"
+                            class="site-input" />
+                        <span asp-validation-for="ConfirmPassword" class="mt-1 block text-sm text-red-600"></span>
+                    </div>
+
+                    <div class="flex items-start gap-3 text-sm">
+                        <input asp-for="AgreeToTerms" class="mt-1 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" />
+                        <label asp-for="AgreeToTerms" class="text-slate-600">
+                            Tôi đồng ý với
+                            <a href="#" class="site-inline-link font-semibold">Điều khoản sử dụng</a>
+                            và
+                            <a href="#" class="site-inline-link font-semibold">Chính sách bảo mật</a>.
+                        </label>
+                    </div>
+                    <span asp-validation-for="AgreeToTerms" class="-mt-3 block text-sm text-red-600"></span>
+
+                    <button type="submit" class="site-button-primary w-full justify-center">
+                        Đăng ký
+                    </button>
+                </form>
+
+                <p class="mt-6 text-center text-sm text-slate-500">
+                    Đã có tài khoản?
+                    <a asp-controller="Home" asp-action="Login" class="site-inline-link font-semibold">Đăng nhập ngay</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
