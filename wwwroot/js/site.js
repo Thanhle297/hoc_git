@@ -211,6 +211,40 @@ function showNotification(message) {
     }, 3000);
 }
 
+// Category Cards Animation
+function initCategoryCards() {
+    const categoryCards = document.querySelectorAll('.category-card-modern');
+
+    if (categoryCards.length === 0) return;
+
+    // Add stagger animation on page load
+    categoryCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+
+        setTimeout(() => {
+            card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, 100 * index);
+    });
+
+    // Add parallax effect on scroll
+    window.addEventListener('scroll', () => {
+        categoryCards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
+
+            if (scrollPercent > 0 && scrollPercent < 1) {
+                const image = card.querySelector('.category-image');
+                if (image) {
+                    image.style.transform = `scale(1.1) translateY(${scrollPercent * -20}px)`;
+                }
+            }
+        });
+    });
+}
+
 // Initialize all functions when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     initCarousel();
@@ -220,4 +254,5 @@ document.addEventListener('DOMContentLoaded', function() {
     initCountdown();
     initScrollAnimations();
     initAddToCart();
+    initCategoryCards();
 });

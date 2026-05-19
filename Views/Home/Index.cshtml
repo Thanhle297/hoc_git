@@ -11,9 +11,9 @@
                 <span class="hidden md:inline">📧 support@fashionstore.vn</span>
             </div>
             <div class="flex items-center gap-4">
-                <a href="#" class="hover:text-indigo-200 transition">Theo dõi đơn hàng</a>
+                <a asp-controller="Products" asp-action="Index" class="hover:text-indigo-200 transition">Xem sản phẩm</a>
                 <span class="hidden sm:inline">|</span>
-                <a href="#" class="hover:text-indigo-200 transition hidden sm:inline">Hỗ trợ</a>
+                <a asp-controller="Home" asp-action="Privacy" class="hover:text-indigo-200 transition hidden sm:inline">Chính sách</a>
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
         <div class="flex items-center justify-between h-20">
             <!-- Logo -->
             <div class="flex items-center">
-                <a href="#" class="flex items-center gap-3">
+                <a asp-controller="Home" asp-action="Index" class="flex items-center gap-3">
                     <div class="w-12 h-12 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center">
                         <span class="text-white font-bold text-xl">FS</span>
                     </div>
@@ -38,16 +38,17 @@
 
             <!-- Search Bar (Desktop) -->
             <div class="hidden lg:flex flex-1 max-w-2xl mx-8">
-                <div class="relative w-full">
-                    <input type="text" 
-                           placeholder="Tìm kiếm sản phẩm, thương hiệu..." 
+                <form asp-controller="Products" asp-action="Search" method="get" class="relative w-full">
+                    <input type="text"
+                           name="q"
+                           placeholder="Tìm kiếm sản phẩm, thương hiệu..."
                            class="w-full px-6 py-3 pr-12 rounded-full border-2 border-gray-200 focus:border-indigo-500 focus:outline-none transition">
-                    <button class="absolute right-2 top-1/2 -translate-y-1/2 bg-indigo-600 text-white w-10 h-10 rounded-full hover:bg-indigo-700 transition flex items-center justify-center">
+                    <button type="submit" class="absolute right-2 top-1/2 -translate-y-1/2 bg-indigo-600 text-white w-10 h-10 rounded-full hover:bg-indigo-700 transition flex items-center justify-center">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                     </button>
-                </div>
+                </form>
             </div>
 
             <!-- Actions -->
@@ -94,11 +95,11 @@
                     </svg>
                 </button>
             </div>
-            <a href="#" class="font-medium hover:text-indigo-600 transition">🔥 Flash Sale</a>
-            <a href="#" class="font-medium hover:text-indigo-600 transition">Thời trang Nam</a>
-            <a href="#" class="font-medium hover:text-indigo-600 transition">Thời trang Nữ</a>
-            <a href="#" class="font-medium hover:text-indigo-600 transition">Giày dép</a>
-            <a href="#" class="font-medium hover:text-indigo-600 transition">Phụ kiện</a>
+            <a asp-controller="Products" asp-action="Index" asp-route-sort="Bán chạy" class="font-medium hover:text-indigo-600 transition">🔥 Flash Sale</a>
+            <a asp-controller="Products" asp-action="Search" asp-route-q="Nam" class="font-medium hover:text-indigo-600 transition">Thời trang Nam</a>
+            <a asp-controller="Products" asp-action="Search" asp-route-q="Nữ" class="font-medium hover:text-indigo-600 transition">Thời trang Nữ</a>
+            <a asp-controller="Categories" asp-action="Index" class="font-medium hover:text-indigo-600 transition">Giày dép</a>
+            <a asp-controller="Products" asp-action="Search" asp-route-q="Phụ kiện" class="font-medium hover:text-indigo-600 transition">Phụ kiện</a>
             <a href="#" class="text-red-600 font-semibold hover:text-red-700 transition">🎁 Khuyến mãi</a>
         </nav>
     </div>
@@ -110,41 +111,41 @@
                 <div>
                     <h3 class="font-bold text-lg mb-4 text-indigo-600">Thời trang Nam</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-indigo-600 transition">Áo thun</a></li>
-                        <li><a href="#" class="hover:text-indigo-600 transition">Áo sơ mi</a></li>
-                        <li><a href="#" class="hover:text-indigo-600 transition">Quần jean</a></li>
-                        <li><a href="#" class="hover:text-indigo-600 transition">Quần kaki</a></li>
-                        <li><a href="#" class="hover:text-indigo-600 transition">Áo khoác</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Nam" class="hover:text-indigo-600 transition">Áo thun</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Nam" class="hover:text-indigo-600 transition">Áo sơ mi</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Nam" class="hover:text-indigo-600 transition">Quần jean</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Nam" class="hover:text-indigo-600 transition">Quần kaki</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="áo khoác" class="hover:text-indigo-600 transition">Áo khoác</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="font-bold text-lg mb-4 text-indigo-600">Thời trang Nữ</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-indigo-600 transition">Váy đầm</a></li>
-                        <li><a href="#" class="hover:text-indigo-600 transition">Áo kiểu</a></li>
-                        <li><a href="#" class="hover:text-indigo-600 transition">Quần jean nữ</a></li>
-                        <li><a href="#" class="hover:text-indigo-600 transition">Chân váy</a></li>
-                        <li><a href="#" class="hover:text-indigo-600 transition">Áo len</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Nữ" class="hover:text-indigo-600 transition">Váy đầm</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Nữ" class="hover:text-indigo-600 transition">Áo kiểu</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Nữ" class="hover:text-indigo-600 transition">Quần jean nữ</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Nữ" class="hover:text-indigo-600 transition">Chân váy</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Nữ" class="hover:text-indigo-600 transition">Áo len</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="font-bold text-lg mb-4 text-indigo-600">Giày dép</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-indigo-600 transition">Giày thể thao</a></li>
-                        <li><a href="#" class="hover:text-indigo-600 transition">Giày tây</a></li>
-                        <li><a href="#" class="hover:text-indigo-600 transition">Giày cao gót</a></li>
-                        <li><a href="#" class="hover:text-indigo-600 transition">Dép sandal</a></li>
-                        <li><a href="#" class="hover:text-indigo-600 transition">Boot</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Giày" class="hover:text-indigo-600 transition">Giày thể thao</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Giày" class="hover:text-indigo-600 transition">Giày tây</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Giày" class="hover:text-indigo-600 transition">Giày cao gót</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Giày" class="hover:text-indigo-600 transition">Dép sandal</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Giày" class="hover:text-indigo-600 transition">Boot</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="font-bold text-lg mb-4 text-indigo-600">Phụ kiện</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-indigo-600 transition">Túi xách</a></li>
-                        <li><a href="#" class="hover:text-indigo-600 transition">Ví da</a></li>
-                        <li><a href="#" class="hover:text-indigo-600 transition">Thắt lưng</a></li>
-                        <li><a href="#" class="hover:text-indigo-600 transition">Mũ nón</a></li>
-                        <li><a href="#" class="hover:text-indigo-600 transition">Kính mát</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Phụ kiện" class="hover:text-indigo-600 transition">Túi xách</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Phụ kiện" class="hover:text-indigo-600 transition">Ví da</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Phụ kiện" class="hover:text-indigo-600 transition">Thắt lưng</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Phụ kiện" class="hover:text-indigo-600 transition">Mũ nón</a></li>
+                        <li><a asp-controller="Products" asp-action="Search" asp-route-q="Phụ kiện" class="hover:text-indigo-600 transition">Kính mát</a></li>
                     </ul>
                 </div>
             </div>
@@ -171,10 +172,10 @@
                             Khám phá xu hướng mới nhất với hàng ngàn sản phẩm độc đáo
                         </p>
                         <div class="flex gap-4">
-                            <a href="#" class="bg-white text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
+                            <a asp-controller="Products" asp-action="Index" class="bg-white text-gray-900 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
                                 Khám phá ngay
                             </a>
-                            <a href="#" class="border-2 border-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-900 transition">
+                            <a asp-controller="Categories" asp-action="Index" class="border-2 border-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-gray-900 transition">
                                 Xem bộ sưu tập
                             </a>
                         </div>
@@ -201,7 +202,7 @@
                             Từ thể thao đến công sở - Tìm đôi giày hoàn hảo cho bạn
                         </p>
                         <div class="flex gap-4">
-                            <a href="#" class="bg-white text-indigo-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
+                            <a asp-controller="Products" asp-action="Search" asp-route-q="Giày" class="bg-white text-indigo-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
                                 Mua ngay
                             </a>
                         </div>
@@ -228,7 +229,7 @@
                             Hoàn thiện phong cách của bạn với các phụ kiện thời thượng
                         </p>
                         <div class="flex gap-4">
-                            <a href="#" class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
+                            <a asp-controller="Products" asp-action="Search" asp-route-q="Phụ kiện" class="bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition transform hover:scale-105">
                                 Xem ngay
                             </a>
                         </div>
@@ -262,7 +263,7 @@
                 <div class="category-card-content">
                     <h3 class="text-2xl font-bold mb-2">Thời trang Nam</h3>
                     <p class="text-sm text-gray-200 mb-3">Hơn 500+ sản phẩm</p>
-                    <a href="#" class="inline-block bg-white text-gray-900 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition">
+                    <a asp-controller="Products" asp-action="Search" asp-route-q="Nam" class="inline-block bg-white text-gray-900 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition">
                         Xem ngay
                     </a>
                 </div>
@@ -277,7 +278,7 @@
                 <div class="category-card-content">
                     <h3 class="text-2xl font-bold mb-2">Thời trang Nữ</h3>
                     <p class="text-sm text-gray-200 mb-3">Hơn 800+ sản phẩm</p>
-                    <a href="#" class="inline-block bg-white text-gray-900 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition">
+                    <a asp-controller="Products" asp-action="Search" asp-route-q="Nữ" class="inline-block bg-white text-gray-900 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition">
                         Xem ngay
                     </a>
                 </div>
@@ -292,7 +293,7 @@
                 <div class="category-card-content">
                     <h3 class="text-2xl font-bold mb-2">Giày dép</h3>
                     <p class="text-sm text-gray-200 mb-3">Hơn 300+ sản phẩm</p>
-                    <a href="#" class="inline-block bg-white text-gray-900 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition">
+                    <a asp-controller="Products" asp-action="Search" asp-route-q="Giày" class="inline-block bg-white text-gray-900 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition">
                         Xem ngay
                     </a>
                 </div>
@@ -307,7 +308,7 @@
                 <div class="category-card-content">
                     <h3 class="text-2xl font-bold mb-2">Phụ kiện</h3>
                     <p class="text-sm text-gray-200 mb-3">Hơn 200+ sản phẩm</p>
-                    <a href="#" class="inline-block bg-white text-gray-900 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition">
+                    <a asp-controller="Products" asp-action="Search" asp-route-q="Phụ kiện" class="inline-block bg-white text-gray-900 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition">
                         Xem ngay
                     </a>
                 </div>
@@ -773,11 +774,11 @@
     </div>
 
     <nav class="mt-6 space-y-4 text-sm font-medium text-gray-700">
-        <a href="#" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Flash Sale</a>
-        <a href="#" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Thời trang nam</a>
-        <a href="#" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Thời trang nữ</a>
-        <a href="#" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Giày dép</a>
-        <a href="#" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Phụ kiện</a>
+        <a asp-controller="Products" asp-action="Index" asp-route-sort="Bán chạy" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Flash Sale</a>
+        <a asp-controller="Products" asp-action="Search" asp-route-q="Nam" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Thời trang nam</a>
+        <a asp-controller="Products" asp-action="Search" asp-route-q="Nữ" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Thời trang nữ</a>
+        <a asp-controller="Categories" asp-action="Index" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Giày dép</a>
+        <a asp-controller="Products" asp-action="Search" asp-route-q="Phụ kiện" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Phụ kiện</a>
         <a asp-controller="Home" asp-action="Login" class="block rounded-xl bg-indigo-600 px-4 py-3 text-center text-white hover:bg-indigo-700 transition">Đăng nhập</a>
     </nav>
 </aside>
