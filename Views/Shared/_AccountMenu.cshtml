@@ -1,0 +1,64 @@
+@using System.Security.Claims
+@using DATN.Data.Entities
+
+@if (User.Identity?.IsAuthenticated == true)
+{
+    var fullName = User.Identity?.Name ?? "Tài khoản";
+    var email = User.FindFirst(ClaimTypes.Email)?.Value ?? string.Empty;
+    var role = User.FindFirst(ClaimTypes.Role)?.Value ?? ApplicationUser.UserRole;
+    var roleDisplayName = string.Equals(role, ApplicationUser.AdminRole, StringComparison.OrdinalIgnoreCase)
+        ? "Quản trị viên"
+        : "Người dùng";
+    var initial = string.IsNullOrWhiteSpace(fullName)
+        ? "?"
+        : fullName.Trim()[0].ToString().ToUpperInvariant();
+
+    <div class="site-account-menu" data-account-menu>
+        <button type="button" class="site-account-menu__trigger" data-account-menu-trigger aria-haspopup="true" aria-expanded="false" aria-label="Mở menu tài khoản">
+            <span class="site-account-menu__avatar">@initial</span>
+            <svg class="site-account-menu__chevron" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.17l3.71-3.94a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z" clip-rule="evenodd" />
+            </svg>
+        </button>
+
+        <div class="site-account-menu__panel" data-account-menu-panel>
+            <div class="site-account-menu__intro">
+                <div class="site-account-menu__profile-avatar">@initial</div>
+                <div class="site-account-menu__profile-text">
+                    <p>Xin chào,</p>
+                    <strong>@fullName</strong>
+                    @if (!string.IsNullOrWhiteSpace(email))
+                    {
+                        <small>@email</small>
+                    }
+                    <span>@roleDisplayName</span>
+                </div>
+            </div>
+
+            <a asp-controller="Home" asp-action="Account" class="site-account-menu__item">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z" />
+                </svg>
+                <span>Tài khoản của tôi</span>
+            </a>
+
+            <a asp-controller="Home" asp-action="Index" class="site-account-menu__item">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 3 2 11.5 3.5 13.2 5 11.93V21h5v-6h4v6h5v-9.07l1.5 1.27 1.5-1.7L12 3Z" />
+                </svg>
+                <span>Về trang chủ</span>
+            </a>
+
+            <form asp-controller="Home" asp-action="Logout" method="post" class="site-account-menu__logout-form">
+                <button type="submit" class="site-account-menu__item site-account-menu__item--danger">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 17l5-5-5-5" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H3" />
+                    </svg>
+                    <span>Đăng xuất</span>
+                </button>
+            </form>
+        </div>
+    </div>
+}

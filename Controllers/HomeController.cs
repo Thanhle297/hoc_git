@@ -38,6 +38,43 @@ namespace DATN.Controllers
             return View();
         }
 
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Account()
+        {
+            var userIdValue = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!int.TryParse(userIdValue, out var userId))
+            {
+                await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+                return RedirectToAction(nameof(Login));
+            }
+
+            var user = await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(user => user.Id == userId);
+            if (user is null)
+            {
+                await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+                return RedirectToAction(nameof(Login));
+            }
+
+            var fullName = $"{user.FirstName} {user.LastName}".Trim();
+            var model = new AccountProfileViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                FullName = string.IsNullOrWhiteSpace(fullName) ? user.Email : fullName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Role = user.Role,
+                RoleDisplayName = GetRoleDisplayName(user.Role),
+                CreatedAt = user.CreatedAt,
+                LastLoginAt = user.LastLoginAt
+            };
+
+            return View(model);
+        }
+
         [HttpGet]
         public IActionResult Login(string? returnUrl = null)
         {
@@ -180,6 +217,13 @@ namespace DATN.Controllers
         private static string NormalizeEmail(string email)
         {
             return email.Trim().ToUpperInvariant();
+        }
+
+        private static string GetRoleDisplayName(string role)
+        {
+            return string.Equals(role, ApplicationUser.AdminRole, StringComparison.OrdinalIgnoreCase)
+                ? "Quản trị viên"
+                : "Người dùng";
         }
     }
 }

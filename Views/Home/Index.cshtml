@@ -53,13 +53,6 @@
 
             <!-- Actions -->
             <div class="flex items-center gap-4">
-                <a asp-controller="Home" asp-action="Login" class="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                    </svg>
-                    <span class="text-sm font-medium">Đăng nhập</span>
-                </a>
-                
                 <a href="#" class="relative p-2 hover:bg-gray-100 rounded-lg transition">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
@@ -73,6 +66,20 @@
                     </svg>
                     <span class="absolute -top-1 -right-1 bg-indigo-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">5</span>
                 </a>
+
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <partial name="_AccountMenu" />
+                }
+                else
+                {
+                    <a asp-controller="Home" asp-action="Login" class="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        <span class="text-sm font-medium">Đăng nhập</span>
+                    </a>
+                }
 
                 <button data-mobile-menu-btn class="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -779,7 +786,17 @@
         <a asp-controller="Products" asp-action="Search" asp-route-q="Nữ" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Thời trang nữ</a>
         <a asp-controller="Categories" asp-action="Index" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Giày dép</a>
         <a asp-controller="Products" asp-action="Search" asp-route-q="Phụ kiện" class="block rounded-xl px-4 py-3 hover:bg-gray-50 transition">Phụ kiện</a>
-        <a asp-controller="Home" asp-action="Login" class="block rounded-xl bg-indigo-600 px-4 py-3 text-center text-white hover:bg-indigo-700 transition">Đăng nhập</a>
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <a asp-controller="Home" asp-action="Account" class="block rounded-xl bg-indigo-600 px-4 py-3 text-center text-white hover:bg-indigo-700 transition">Tài khoản của tôi</a>
+            <form asp-controller="Home" asp-action="Logout" method="post">
+                <button type="submit" class="block w-full rounded-xl border border-red-200 px-4 py-3 text-center font-semibold text-red-600 hover:bg-red-50 transition">Đăng xuất</button>
+            </form>
+        }
+        else
+        {
+            <a asp-controller="Home" asp-action="Login" class="block rounded-xl bg-indigo-600 px-4 py-3 text-center text-white hover:bg-indigo-700 transition">Đăng nhập</a>
+        }
     </nav>
 </aside>
 

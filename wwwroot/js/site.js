@@ -245,6 +245,41 @@ function initCategoryCards() {
     });
 }
 
+function initAccountMenus() {
+    const accountMenus = document.querySelectorAll('[data-account-menu]');
+
+    if (accountMenus.length === 0) return;
+
+    function closeAll(exceptMenu) {
+        accountMenus.forEach(menu => {
+            if (menu !== exceptMenu) {
+                menu.classList.remove('is-open');
+                menu.querySelector('[data-account-menu-trigger]')?.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
+    accountMenus.forEach(menu => {
+        const trigger = menu.querySelector('[data-account-menu-trigger]');
+
+        if (!trigger) return;
+
+        trigger.addEventListener('click', event => {
+            event.stopPropagation();
+            const isOpen = menu.classList.toggle('is-open');
+            trigger.setAttribute('aria-expanded', String(isOpen));
+            closeAll(menu);
+        });
+    });
+
+    document.addEventListener('click', () => closeAll());
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+            closeAll();
+        }
+    });
+}
+
 // Initialize all functions when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     initCarousel();
@@ -255,4 +290,5 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initAddToCart();
     initCategoryCards();
+    initAccountMenus();
 });
